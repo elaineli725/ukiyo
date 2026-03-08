@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatGPT 目录助手</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <header>
+      <h1>ChatGPT 目录助手</h1>
+      <div class="actions">
+        <button id="refreshBtn">刷新</button>
+        <button id="exportBtn">导出 JSON</button>
+      </div>
+    </header>
+
+    <section>
+      <input id="searchInput" type="search" placeholder="搜索提问/回答/标签" />
+    </section>
+
+    <main id="catalog"></main>
+
+    <template id="messageTemplate">
+      <article class="item">
+        <div class="meta">
+          <span class="role"></span>
+          <span class="time"></span>
+          <span class="category"></span>
+        </div>
+        <p class="summary"></p>
+        <div class="tags"></div>
+      </article>
+    </template>
+
+    <script src="sidepanel.js" type="module"></script>
+  </body>
+</html>

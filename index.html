@@ -3,64 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>林简 · 个人 IP 小站</title>
-    <meta
-      name="description"
-      content="内容型创作者林简的个人主页：作品、观点、个人介绍与联系方式。"
-    />
+    <title>浮世绘图录 Ukiyo-e Atlas</title>
+    <meta name="description" content="浮世绘主题前端 demo：数字展览、图像文献与专题阅读。" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body data-page="home">
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="回到顶部">Lin Jian</a>
-      <nav class="site-nav" aria-label="主导航">
-        <a href="#about">关于</a>
-        <a href="#works">作品</a>
-        <a href="#essays">观点</a>
-        <a href="#contact">联系</a>
-      </nav>
+      <a class="brand" href="index.html" id="site-name"></a>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">目录</button>
+      <nav class="site-nav" id="site-nav" aria-label="主导航"></nav>
     </header>
 
-    <main id="top">
-      <section class="section hero" id="hero" aria-labelledby="hero-title">
-        <p class="section-kicker" id="hero-kicker"></p>
+    <main>
+      <section class="panel ia" aria-labelledby="ia-title">
+        <p class="kicker">第一阶段 · 步骤 1</p>
+        <h2 id="ia-title">信息架构</h2>
+        <div class="card-grid" id="ia-grid"></div>
+      </section>
+
+      <section class="panel hero" aria-labelledby="hero-title">
+        <p class="kicker" id="hero-kicker"></p>
         <h1 id="hero-title"></h1>
-        <p class="hero-description" id="hero-description"></p>
-        <div class="hero-actions" id="hero-actions"></div>
+        <p class="lead" id="hero-description"></p>
+        <div class="actions" id="hero-actions"></div>
       </section>
 
-      <section class="section about" id="about" aria-labelledby="about-title">
-        <h2 id="about-title">关于我</h2>
-        <div class="about-grid" id="about-grid"></div>
+      <section class="panel" aria-labelledby="about-title">
+        <h2 id="about-title"></h2>
+        <div id="about-content" class="stack"></div>
       </section>
 
-      <section class="section works" id="works" aria-labelledby="works-title">
-        <div class="section-heading">
-          <h2 id="works-title">作品</h2>
-          <p id="works-intro"></p>
+      <section class="panel" aria-labelledby="genres-title">
+        <h2 id="genres-title">题材分类</h2>
+        <div class="genre-grid" id="genre-grid"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="artists-title">
+        <h2 id="artists-title">代表画师</h2>
+        <div class="card-grid" id="artist-grid"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="works-title">
+        <h2 id="works-title">精选作品</h2>
+        <div class="card-grid" id="work-grid"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="curation-title">
+        <h2 id="curation-title">专题策展</h2>
+        <div class="card-grid" id="curation-grid"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="templates-title">
+        <p class="kicker">第一阶段 · 步骤 4</p>
+        <h2 id="templates-title">页面模板入口</h2>
+        <div class="template-links">
+          <a href="overview.html">概览页模板</a>
+          <a href="artist.html">画师页模板</a>
+          <a href="artwork.html">作品详情页模板</a>
+          <a href="topic.html">专题页模板</a>
         </div>
-        <div class="works-grid" id="works-grid"></div>
-      </section>
-
-      <section class="section essays" id="essays" aria-labelledby="essays-title">
-        <div class="section-heading">
-          <h2 id="essays-title">观点</h2>
-          <p id="essays-intro"></p>
-        </div>
-        <ul class="essay-list" id="essay-list"></ul>
-      </section>
-
-      <section class="section contact" id="contact" aria-labelledby="contact-title">
-        <h2 id="contact-title">联系</h2>
-        <p id="contact-note"></p>
-        <ul class="contact-list" id="contact-list"></ul>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <small id="footer-text"></small>
-    </footer>
-
+    <footer class="site-footer" id="footer"></footer>
     <script type="module" src="main.js"></script>
   </body>
 </html>

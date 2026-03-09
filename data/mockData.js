@@ -1,81 +1,136 @@
-export const siteData = {
-  profile: {
-    name: '林简',
-    title: '写作者 / 内容策划 / 创作者',
-    tagline: '长期主义内容创作，记录人的变化与时代的纹理。',
+export const exhibitionData = {
+  site: {
+    name: '浮世绘图录 Ukiyo-e Atlas',
+    subtitle: '数字展览 · 图像文献 · 专题阅读',
     description:
-      '我关注创作方法、个体成长和文化观察。过去 6 年持续写作与采访，服务过杂志、品牌媒体和独立机构。这里是我的作品集，也是一份仍在生长中的创作者档案。',
-    ctas: [
-      { label: '查看作品', href: '#works', type: 'primary' },
-      { label: '阅读观点', href: '#essays', type: 'secondary' },
+      '以图录化方式整理浮世绘作品、画师、题材与策展专题，呈现江户视觉文化在当代数字空间中的阅读体验。',
+    nav: [
+      { label: '首页', href: 'index.html' },
+      { label: '概览页', href: 'overview.html' },
+      { label: '画师页', href: 'artist.html' },
+      { label: '作品详情', href: 'artwork.html' },
+      { label: '专题页', href: 'topic.html' },
     ],
   },
-  about: [
+  ia: [
     {
-      label: '创作方向',
-      value: '人物叙事 / 品牌故事 / 文化评论',
+      title: '数字展览',
+      summary: '用展陈路径呈现「时代—题材—画师—作品」关系，首页承接导览。',
     },
     {
-      label: '工作方式',
-      value: '研究先行，写作后置，注重长期内容资产',
+      title: '图像文献',
+      summary: '以作品卡片、版式信息和馆藏出处构成可检索的文献底座。',
     },
     {
-      label: '关键词',
-      value: '审美克制、结构清晰、持续更新',
-    },
-  ],
-  worksIntro: '精选近年的代表项目，涵盖专栏、播客与内容咨询。',
-  works: [
-    {
-      title: '《城市与温度》人物专栏',
-      type: '长期专栏',
-      year: '2024',
-      summary: '围绕城市中的普通职业者，完成 12 篇深度人物稿。',
-      linkLabel: '阅读节选',
-      href: '#',
-    },
-    {
-      title: '品牌播客《慢速对话》',
-      type: '内容策划',
-      year: '2023',
-      summary: '负责选题框架、嘉宾沟通与后期脚本，累计 50 万+ 播放。',
-      linkLabel: '项目说明',
-      href: '#',
-    },
-    {
-      title: '独立媒体内容策略',
-      type: '咨询项目',
-      year: '2022',
-      summary: '帮助团队重构栏目体系，提升复访率与订阅转化。',
-      linkLabel: '查看案例',
-      href: '#',
+      title: '专题阅读',
+      summary: '围绕风景版画、美人画、役者绘等线索进行策展式阅读。',
     },
   ],
-  essaysIntro: '持续输出创作者视角的观察，聚焦方法论和内容行业。',
-  essays: [
+  hero: {
+    kicker: '江户视觉文化档案',
+    title: '浮世绘：从“当世风俗”到“世界图像”',
+    description:
+      '浮世绘诞生于江户时期都市文化之中，涵盖美人画、役者绘、名所绘等题材。它既是大众图像生产，也是日本近世审美与社会日常的切片。',
+    actions: [
+      { label: '进入数字展览', href: 'overview.html', type: 'primary' },
+      { label: '查看专题策展', href: 'topic.html', type: 'secondary' },
+    ],
+  },
+  about: {
+    title: '浮世绘是什么',
+    paragraphs: [
+      '“浮世绘”最早指描绘“浮世”风俗与娱乐生活的绘画，后逐渐发展为成熟的木版画体系。',
+      '其制作常由画师、雕师、摺师与版元协作完成，形成独特的分工生产模式。',
+    ],
+  },
+  genres: [
+    { name: '美人画', note: '女性形象与时尚风俗', icon: '美' },
+    { name: '役者绘', note: '歌舞伎演员与舞台瞬间', icon: '役' },
+    { name: '名所绘', note: '江户景观与旅行文化', icon: '景' },
+    { name: '武者绘', note: '历史叙事与英雄形象', icon: '武' },
+  ],
+  artists: [
     {
-      title: '创作者要把“表达欲”升级为“编辑力”',
-      date: '2026-01-12',
-      excerpt: '真正稀缺的不是观点，而是组织观点的能力。',
-      href: '#',
+      name: '葛饰北斋',
+      period: '1760—1849',
+      style: '构图革新、波浪与山岳意象',
+      highlight: '《富岳三十六景》推动名所绘的世界传播。',
     },
     {
-      title: '内容工作者如何抵抗“即时反馈焦虑”',
-      date: '2025-11-03',
-      excerpt: '比起追热点，建立稳定的写作节律更能带来长期优势。',
-      href: '#',
+      name: '歌川广重',
+      period: '1797—1858',
+      style: '诗意风景、气候与季节感',
+      highlight: '《东海道五十三次》塑造旅行版画经典。',
     },
     {
-      title: '当我们谈个人 IP，本质在谈什么',
-      date: '2025-08-25',
-      excerpt: '它不是人设包装，而是价值观、能力与可信度的公开组合。',
-      href: '#',
+      name: '喜多川歌麿',
+      period: '1753—1806',
+      style: '半身大首绘、细腻人物心理',
+      highlight: '美人画中的线条与表情刻画极具辨识度。',
     },
   ],
-  contactNote: '欢迎合作邀约、播客对谈和主题演讲。通常会在 48 小时内回复。',
-  contacts: [
-    { label: '邮箱', value: 'hello@linjian.studio', href: 'mailto:hello@linjian.studio' },
-    { label: '小红书', value: '@林简写作', href: '#' },
-    { label: '公众号', value: '简式写作', href: '#' },
+  featuredWorks: [
+    {
+      title: '神奈川冲浪里',
+      artist: '葛饰北斋',
+      year: '约 1831',
+      medium: '多色木版画（锦绘）',
+      location: '东京国立博物馆等多馆藏',
+      description: '巨浪与远山的尺度对照，构成近代图像史中的标志性瞬间。',
+    },
+    {
+      title: '大桥安宅骤雨',
+      artist: '歌川广重',
+      year: '1857',
+      medium: '《名所江户百景》之一',
+      location: '大英博物馆等馆藏',
+      description: '斜线雨幕与桥面人物形成流动节奏，体现天气叙事能力。',
+    },
+    {
+      title: '当时三美人',
+      artist: '喜多川歌麿',
+      year: '约 1793',
+      medium: '大首绘美人画',
+      location: '波士顿美术馆等馆藏',
+      description: '在有限画幅中呈现人物差异，强化都市风尚的图像记忆。',
+    },
   ],
+  curations: [
+    {
+      title: '专题一：风景版画与近代旅行想象',
+      summary: '从《富岳三十六景》到《东海道五十三次》，观察交通、地理与观看方式变化。',
+      link: 'topic.html',
+    },
+    {
+      title: '专题二：美人画中的身份、时尚与消费文化',
+      summary: '以发饰、衣纹、姿态解析江户都市女性形象的构成。',
+      link: 'topic.html',
+    },
+  ],
+  templatePages: {
+    overview: {
+      title: '概览页模板',
+      intro: '按时代、题材、画师和作品四个维度建立导览入口。',
+      stats: [
+        { label: '收录题材', value: '12' },
+        { label: '核心画师', value: '28' },
+        { label: '重点作品', value: '180+' },
+      ],
+    },
+    artist: {
+      title: '画师页模板 · 葛饰北斋',
+      intro: '提供生平、创作阶段、代表系列与延伸阅读。',
+      sections: ['生平年表', '代表题材', '系列作品', '图像细节'],
+    },
+    artwork: {
+      title: '作品详情页模板 · 神奈川冲浪里',
+      intro: '包含作品信息、图像解析、版本说明与引用文献。',
+      fields: ['创作年代', '版次信息', '馆藏出处', '图像分析', '参考资料'],
+    },
+    topic: {
+      title: '专题页模板 · 江户的雨与雪',
+      intro: '用策展叙事串联跨画师作品，提供主题阅读路径。',
+      modules: ['策展导言', '作品编目', '细节放大', '延伸书目'],
+    },
+  },
 };

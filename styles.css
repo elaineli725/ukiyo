@@ -139,6 +139,38 @@ main {
   text-align: center;
 }
 
+
+.hero-panel {
+  --hero-image: none;
+  background-image:
+    linear-gradient(rgba(28, 30, 35, 0.45), rgba(28, 30, 35, 0.42)),
+    var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  color: #f8f4ec;
+}
+
+.hero-panel .hero-subtitle,
+.hero-panel .hero-credit {
+  color: rgba(248, 244, 236, 0.9);
+}
+
+.hero-credit {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+}
+
+.hero-panel .button-primary {
+  background: rgba(248, 244, 236, 0.14);
+  color: #fff;
+  border-color: rgba(248, 244, 236, 0.7);
+}
+
+.hero-panel .button-primary:hover {
+  background: rgba(248, 244, 236, 0.22);
+}
+
 h1, h2, h3, p { margin-top: 0; }
 
 h1 {

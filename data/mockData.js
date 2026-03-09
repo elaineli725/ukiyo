@@ -16,6 +16,9 @@ export const exhibitionData = {
     hero: {
       title: 'Floating World',
       subtitle: 'Where beauty lingers, seasons drift, and the city becomes a dream.',
+      backgroundImage:
+        'https://upload.wikimedia.org/wikipedia/commons/6/65/Tsukioka_Yoshitoshi_-_Genji_Night_-_Yugao.jpg',
+      backgroundCredit: '月冈芳年《源氏夕颜卷》',
       action: { label: 'Begin Wandering', href: '#painted-world' },
     },
     portals: {
@@ -45,6 +48,11 @@ export const exhibitionData = {
           name: '浮世·风景',
           note: '桥、水、月、雪、海浪与远山，都是浮世缓慢流动的回声。',
           href: 'artwork.html',
+        },
+        {
+          name: '代表画家',
+          note: '追随北斋、广重、歌麿等名字，走进浮世绘最清晰的笔触。',
+          href: 'creators.html',
         },
       ],
     },
@@ -84,6 +92,11 @@ export const exhibitionData = {
       title: '浮世·风景',
       intro: '桥、水、月、雪与远山，成为旅行与凝望的节拍。',
       blocks: ['名所绘与旅行文化', '风雨与四季的气息', '海浪、山岳与空间构图'],
+    },
+    creators: {
+      title: '代表画家',
+      intro: '从画师生平、版元合作到系列作品，建立稳定的创作者线索。',
+      blocks: ['葛饰北斋：构图与运动', '歌川广重：雨雪与旅路', '喜多川歌麿：人物与风尚'],
     },
     about: {
       title: '关于',

@@ -33,9 +33,15 @@ const renderHome = () => {
 
   $('hero-title').textContent = hero.title;
   $('hero-subtitle').textContent = hero.subtitle;
+  const heroPanel = $('hero-panel');
+  heroPanel?.style.setProperty('--hero-image', `url("${hero.backgroundImage}")`);
+
   const action = $('hero-action');
   action.textContent = hero.action.label;
   action.href = hero.action.href;
+
+  const credit = $('hero-credit');
+  if (credit) credit.textContent = `背景图：${hero.backgroundCredit}`;
 
   $('portal-title').textContent = portals.title;
   const portalGrid = $('portal-grid');
@@ -43,7 +49,7 @@ const renderHome = () => {
     const card = document.createElement('a');
     card.className = 'card portal-card';
     card.href = item.href;
-    card.innerHTML = `<span class="portal-index">0${index + 1}</span><h3>${item.name}</h3><p>${item.note}</p>`;
+    card.innerHTML = `<span class="portal-index">${String(index + 1).padStart(2, '0')}</span><h3>${item.name}</h3><p>${item.note}</p>`;
     portalGrid.append(card);
   });
 
@@ -100,4 +106,5 @@ if (page === 'overview') renderCategoryPage(exhibitionData.pages.overview);
 if (page === 'artist') renderCategoryPage(exhibitionData.pages.artist);
 if (page === 'topic') renderCategoryPage(exhibitionData.pages.topic);
 if (page === 'artwork') renderCategoryPage(exhibitionData.pages.artwork);
+if (page === 'creators') renderCategoryPage(exhibitionData.pages.creators);
 if (page === 'about') renderAbout();

@@ -1,92 +1,103 @@
-import { siteData } from './data/mockData.js';
+import { exhibitionData } from './data/mockData.js';
 
-const byId = (id) => document.getElementById(id);
+const $ = (id) => document.getElementById(id);
+const page = document.body.dataset.page;
 
-const renderHero = () => {
-  byId('hero-kicker').textContent = siteData.profile.title;
-  byId('hero-title').textContent = `${siteData.profile.name} · 个人 IP 小站`;
-  byId('hero-description').textContent = siteData.profile.description;
+const renderShell = () => {
+  $('site-name').textContent = exhibitionData.site.name;
+  $('site-zh-name').textContent = exhibitionData.site.zhName;
 
-  const actions = byId('hero-actions');
-  actions.innerHTML = '';
-  siteData.profile.ctas.forEach((cta) => {
+  const nav = $('site-nav');
+  nav.innerHTML = '';
+  exhibitionData.site.nav.forEach((item) => {
     const link = document.createElement('a');
-    link.href = cta.href;
-    link.className = `button ${cta.type === 'primary' ? 'button-primary' : 'button-secondary'}`;
-    link.textContent = cta.label;
-    actions.append(link);
+    link.href = item.href;
+    link.textContent = item.label;
+    if (location.pathname.endsWith(item.href) || (location.pathname === '/' && item.href === 'index.html')) {
+      link.setAttribute('aria-current', 'page');
+    }
+    nav.append(link);
+  });
+
+  const menuToggle = $('menu-toggle');
+  menuToggle?.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+  });
+
+  $('footer').textContent = `纸、雾、花瓣、旧绢、傍晚的水面。`;
+};
+
+const renderHome = () => {
+  const { hero, portals, featured, preface } = exhibitionData.home;
+
+  $('hero-title').textContent = hero.title;
+  $('hero-subtitle').textContent = hero.subtitle;
+  const action = $('hero-action');
+  action.textContent = hero.action.label;
+  action.href = hero.action.href;
+
+  $('portal-title').textContent = portals.title;
+  const portalGrid = $('portal-grid');
+  portals.items.forEach((item) => {
+    const card = document.createElement('a');
+    card.className = 'card portal-card';
+    card.href = item.href;
+    card.innerHTML = `<h3>${item.name}</h3><p>${item.note}</p>`;
+    portalGrid.append(card);
+  });
+
+  $('featured-title').textContent = featured.title;
+  $('featured-subtitle').textContent = featured.subtitle;
+  const featuredGrid = $('featured-grid');
+  featured.works.forEach((work, index) => {
+    const figure = document.createElement('figure');
+    figure.className = 'image-card';
+    figure.innerHTML = `
+      <div class="image-placeholder image-${index + 1}" aria-hidden="true"></div>
+      <figcaption>
+        <strong>${work.title}</strong>
+        <span>${work.meta}</span>
+      </figcaption>
+    `;
+    featuredGrid.append(figure);
+  });
+
+  const prefaceContent = $('preface-content');
+  preface.forEach((line) => {
+    const p = document.createElement('p');
+    p.textContent = line;
+    prefaceContent.append(p);
+  });
+};
+
+const renderCategoryPage = (config) => {
+  $('page-title').textContent = config.title;
+  $('page-intro').textContent = config.intro;
+  const list = $('page-blocks');
+  config.blocks.forEach((text) => {
+    const li = document.createElement('li');
+    li.textContent = text;
+    list.append(li);
   });
 };
 
 const renderAbout = () => {
-  const container = byId('about-grid');
-  container.innerHTML = '';
-
-  siteData.about.forEach((item) => {
-    const article = document.createElement('article');
-    article.className = 'info-card';
-    article.innerHTML = `<h3>${item.label}</h3><p>${item.value}</p>`;
-    container.append(article);
+  const about = exhibitionData.pages.about;
+  $('page-title').textContent = about.title;
+  const container = $('about-copy');
+  about.paragraphs.forEach((paragraph) => {
+    const p = document.createElement('p');
+    p.innerHTML = paragraph.replaceAll('\n', '<br />');
+    container.append(p);
   });
 };
 
-const renderWorks = () => {
-  byId('works-intro').textContent = siteData.worksIntro;
-  const container = byId('works-grid');
-  container.innerHTML = '';
+renderShell();
 
-  siteData.works.forEach((work) => {
-    const article = document.createElement('article');
-    article.className = 'work-card';
-    article.innerHTML = `
-      <p class="meta">${work.type} · ${work.year}</p>
-      <h3>${work.title}</h3>
-      <p>${work.summary}</p>
-      <a href="${work.href}">${work.linkLabel}</a>
-    `;
-    container.append(article);
-  });
-};
-
-const renderEssays = () => {
-  byId('essays-intro').textContent = siteData.essaysIntro;
-  const container = byId('essay-list');
-  container.innerHTML = '';
-
-  siteData.essays.forEach((essay) => {
-    const item = document.createElement('li');
-    item.className = 'essay-item';
-    item.innerHTML = `
-      <a href="${essay.href}" aria-label="阅读：${essay.title}">
-        <h3>${essay.title}</h3>
-        <p>${essay.excerpt}</p>
-        <time datetime="${essay.date}">${essay.date}</time>
-      </a>
-    `;
-    container.append(item);
-  });
-};
-
-const renderContact = () => {
-  byId('contact-note').textContent = siteData.contactNote;
-  const container = byId('contact-list');
-  container.innerHTML = '';
-
-  siteData.contacts.forEach((contact) => {
-    const item = document.createElement('li');
-    item.innerHTML = `<span>${contact.label}</span><a href="${contact.href}">${contact.value}</a>`;
-    container.append(item);
-  });
-};
-
-const renderFooter = () => {
-  const year = new Date().getFullYear();
-  byId('footer-text').textContent = `© ${year} ${siteData.profile.name} · ${siteData.profile.tagline}`;
-};
-
-renderHero();
-renderAbout();
-renderWorks();
-renderEssays();
-renderContact();
-renderFooter();
+if (page === 'home') renderHome();
+if (page === 'overview') renderCategoryPage(exhibitionData.pages.overview);
+if (page === 'artist') renderCategoryPage(exhibitionData.pages.artist);
+if (page === 'topic') renderCategoryPage(exhibitionData.pages.topic);
+if (page === 'artwork') renderCategoryPage(exhibitionData.pages.artwork);
+if (page === 'about') renderAbout();

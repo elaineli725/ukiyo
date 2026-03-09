@@ -39,11 +39,11 @@ const renderHome = () => {
 
   $('portal-title').textContent = portals.title;
   const portalGrid = $('portal-grid');
-  portals.items.forEach((item) => {
+  portals.items.forEach((item, index) => {
     const card = document.createElement('a');
     card.className = 'card portal-card';
     card.href = item.href;
-    card.innerHTML = `<h3>${item.name}</h3><p>${item.note}</p>`;
+    card.innerHTML = `<span class="portal-index">0${index + 1}</span><h3>${item.name}</h3><p>${item.note}</p>`;
     portalGrid.append(card);
   });
 

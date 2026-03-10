@@ -1,81 +1,88 @@
-export const siteData = {
-  profile: {
-    name: '林简',
-    title: '写作者 / 内容策划 / 创作者',
-    tagline: '长期主义内容创作，记录人的变化与时代的纹理。',
-    description:
-      '我关注创作方法、个体成长和文化观察。过去 6 年持续写作与采访，服务过杂志、品牌媒体和独立机构。这里是我的作品集，也是一份仍在生长中的创作者档案。',
-    ctas: [
-      { label: '查看作品', href: '#works', type: 'primary' },
-      { label: '阅读观点', href: '#essays', type: 'secondary' },
+export const exhibitionData = {
+  site: {
+    name: 'Floating World',
+    zhName: '江户绮梦',
+    subtitle: 'Where beauty lingers, seasons drift, and the city becomes a dream.',
+    nav: [
+      { label: '首页', href: 'index.html' },
+      { label: '往事·历史', href: 'overview.html' },
+      { label: '美人·才子·英雄', href: 'artist.html' },
+      { label: '神话·妖鬼', href: 'topic.html' },
+      { label: '浮世·风景', href: 'artwork.html' },
+      { label: '关于', href: 'about.html' },
     ],
   },
-  about: [
-    {
-      label: '创作方向',
-      value: '人物叙事 / 品牌故事 / 文化评论',
+  home: {
+    hero: {
+      title: 'Floating World',
+      subtitle: 'Where beauty lingers, seasons drift, and the city becomes a dream.',
+      backgroundImage: 'assets/images/hero-yugao-user.jpg',
+      backgroundFallbackImage:
+        'https://upload.wikimedia.org/wikipedia/commons/6/65/Tsukioka_Yoshitoshi_-_Genji_Night_-_Yugao.jpg',
+      backgroundCredit: '月冈芳年《源氏夕颜卷》（用户指定）',
+      action: { label: 'Begin Wandering', href: '#painted-world' },
     },
-    {
-      label: '工作方式',
-      value: '研究先行，写作后置，注重长期内容资产',
+    portals: {
+      title: 'Through the Painted World',
+      items: [
+        { name: '浮世绘·简介', note: '从一纸版画开始，进入江户时代流动的梦与日常。', href: 'index.html' },
+        { name: '往事·历史', note: '旧城、风俗、时代波纹，与那些被图像悄悄保存的过去。', href: 'overview.html' },
+        { name: '美人·才子·英雄', note: '侧影、衣纹、目光与姓名，共同构成被观看的传奇。', href: 'artist.html' },
+        { name: '神话·妖鬼', note: '神灵、怨魂、狐魅与夜色，在纸上拥有比现实更长的生命。', href: 'topic.html' },
+        { name: '浮世·风景', note: '桥、水、月、雪、海浪与远山，都是浮世缓慢流动的回声。', href: 'artwork.html' },
+        { name: '代表画家', note: '追随北斋、广重、歌麿等名字，走进浮世绘最清晰的笔触。', href: 'creators.html' },
+      ],
     },
-    {
-      label: '关键词',
-      value: '审美克制、结构清晰、持续更新',
+    featured: {
+      title: '片刻停留',
+      subtitle: 'Fragments of the Floating World',
+      works: [
+        { title: '《神奈川冲浪里》', meta: '葛饰北斋｜约1831年' },
+        { title: '《大桥安宅骤雨》', meta: '歌川广重｜1857年' },
+        { title: '《当时三美人》', meta: '喜多川歌麿｜约1793年' },
+      ],
     },
-  ],
-  worksIntro: '精选近年的代表项目，涵盖专栏、播客与内容咨询。',
-  works: [
-    {
-      title: '《城市与温度》人物专栏',
-      type: '长期专栏',
-      year: '2024',
-      summary: '围绕城市中的普通职业者，完成 12 篇深度人物稿。',
-      linkLabel: '阅读节选',
-      href: '#',
+    preface: [
+      '浮世绘并不只是一种古老版画。',
+      '它关乎城市、四季、欲望，也关乎观看与消逝。',
+      '这个小站想保留的，不只是图像本身，',
+      '还有那些停驻在纸上、至今仍未散去的情绪。',
+    ],
+  },
+  pages: {
+    overview: {
+      title: '往事·历史',
+      intro: '旧城、风俗与时代波纹，在版画里被轻轻保留。',
+      blocks: ['江户町人与城市生活', '出版与流通的图像网络', '时代转折中的视觉记忆'],
     },
-    {
-      title: '品牌播客《慢速对话》',
-      type: '内容策划',
-      year: '2023',
-      summary: '负责选题框架、嘉宾沟通与后期脚本，累计 50 万+ 播放。',
-      linkLabel: '项目说明',
-      href: '#',
+    artist: {
+      title: '美人·才子·英雄',
+      intro: '被观看的人物，构成了浮世绘最动人的戏剧。',
+      blocks: ['美人画：姿态与衣纹', '役者绘：舞台与名声', '武者绘：传奇与历史'],
     },
-    {
-      title: '独立媒体内容策略',
-      type: '咨询项目',
-      year: '2022',
-      summary: '帮助团队重构栏目体系，提升复访率与订阅转化。',
-      linkLabel: '查看案例',
-      href: '#',
+    topic: {
+      title: '神话·妖鬼',
+      intro: '夜色、传说与怨灵，在纸上留下更长的回声。',
+      blocks: ['百鬼夜行图像谱系', '狐魅与异闻叙事', '歌舞伎与妖异想象'],
     },
-  ],
-  essaysIntro: '持续输出创作者视角的观察，聚焦方法论和内容行业。',
-  essays: [
-    {
-      title: '创作者要把“表达欲”升级为“编辑力”',
-      date: '2026-01-12',
-      excerpt: '真正稀缺的不是观点，而是组织观点的能力。',
-      href: '#',
+    artwork: {
+      title: '浮世·风景',
+      intro: '桥、水、月、雪与远山，成为旅行与凝望的节拍。',
+      blocks: ['名所绘与旅行文化', '风雨与四季的气息', '海浪、山岳与空间构图'],
     },
-    {
-      title: '内容工作者如何抵抗“即时反馈焦虑”',
-      date: '2025-11-03',
-      excerpt: '比起追热点，建立稳定的写作节律更能带来长期优势。',
-      href: '#',
+    creators: {
+      title: '代表画家',
+      intro: '从画师生平、版元合作到系列作品，建立稳定的创作者线索。',
+      blocks: ['葛饰北斋：构图与运动', '歌川广重：雨雪与旅路', '喜多川歌麿：人物与风尚'],
     },
-    {
-      title: '当我们谈个人 IP，本质在谈什么',
-      date: '2025-08-25',
-      excerpt: '它不是人设包装，而是价值观、能力与可信度的公开组合。',
-      href: '#',
+    about: {
+      title: '关于',
+      paragraphs: [
+        '这是一个以浮世绘为主题的个人小站。',
+        '我想在这里收集那些让我停下来的图像：\n美人的侧影，演员的姿态，风景中的潮声与月色，\n以及江户城市生活中短暂、轻盈、近于幻觉的片刻。',
+        '浮世绘并不只是过去留下的图像。\n它更像一种仍在流动的观看方式：\n关于四季，关于欲望，关于人如何在短暂之中追求美。',
+        '所以，这里并不是一座完整的资料库，\n而更像一本缓慢展开的手记。\n它记录我如何透过这些版画，进入一个既热闹又忧伤的浮世。',
+      ],
     },
-  ],
-  contactNote: '欢迎合作邀约、播客对谈和主题演讲。通常会在 48 小时内回复。',
-  contacts: [
-    { label: '邮箱', value: 'hello@linjian.studio', href: 'mailto:hello@linjian.studio' },
-    { label: '小红书', value: '@林简写作', href: '#' },
-    { label: '公众号', value: '简式写作', href: '#' },
-  ],
+  },
 };

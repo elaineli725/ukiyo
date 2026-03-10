@@ -3,64 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>林简 · 个人 IP 小站</title>
-    <meta
-      name="description"
-      content="内容型创作者林简的个人主页：作品、观点、个人介绍与联系方式。"
-    />
+    <title>Floating World · 江户绮梦</title>
+    <meta name="description" content="Floating World / 江户绮梦：浮世绘主题的数字展览式前端 demo。" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body data-page="home">
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="回到顶部">Lin Jian</a>
-      <nav class="site-nav" aria-label="主导航">
-        <a href="#about">关于</a>
-        <a href="#works">作品</a>
-        <a href="#essays">观点</a>
-        <a href="#contact">联系</a>
-      </nav>
+      <a class="brand" href="index.html"><span id="site-name"></span><small id="site-zh-name"></small></a>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">目录</button>
+      <nav class="site-nav" id="site-nav" aria-label="主导航"></nav>
     </header>
 
-    <main id="top">
-      <section class="section hero" id="hero" aria-labelledby="hero-title">
-        <p class="section-kicker" id="hero-kicker"></p>
+    <main>
+      <section class="panel hero-panel" id="hero-panel" aria-labelledby="hero-title">
         <h1 id="hero-title"></h1>
-        <p class="hero-description" id="hero-description"></p>
-        <div class="hero-actions" id="hero-actions"></div>
+        <p class="hero-subtitle" id="hero-subtitle"></p>
+        <a class="button button-primary" id="hero-action" href="#"></a>
+        <p class="hero-credit" id="hero-credit"></p>
       </section>
 
-      <section class="section about" id="about" aria-labelledby="about-title">
-        <h2 id="about-title">关于我</h2>
-        <div class="about-grid" id="about-grid"></div>
+      <section class="panel" id="painted-world" aria-labelledby="portal-title">
+        <h2 id="portal-title"></h2>
+        <div class="card-grid" id="portal-grid"></div>
       </section>
 
-      <section class="section works" id="works" aria-labelledby="works-title">
-        <div class="section-heading">
-          <h2 id="works-title">作品</h2>
-          <p id="works-intro"></p>
-        </div>
-        <div class="works-grid" id="works-grid"></div>
+      <section class="panel" aria-labelledby="featured-title">
+        <h2 id="featured-title"></h2>
+        <p class="kicker" id="featured-subtitle"></p>
+        <div class="image-grid" id="featured-grid"></div>
       </section>
 
-      <section class="section essays" id="essays" aria-labelledby="essays-title">
-        <div class="section-heading">
-          <h2 id="essays-title">观点</h2>
-          <p id="essays-intro"></p>
-        </div>
-        <ul class="essay-list" id="essay-list"></ul>
-      </section>
-
-      <section class="section contact" id="contact" aria-labelledby="contact-title">
-        <h2 id="contact-title">联系</h2>
-        <p id="contact-note"></p>
-        <ul class="contact-list" id="contact-list"></ul>
+      <section class="panel preface" aria-labelledby="preface-title">
+        <h2 id="preface-title">前言</h2>
+        <div id="preface-content"></div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <small id="footer-text"></small>
-    </footer>
-
+    <footer class="site-footer" id="footer"></footer>
     <script type="module" src="main.js"></script>
   </body>
 </html>

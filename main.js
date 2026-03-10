@@ -1,92 +1,131 @@
-import { siteData } from './data/mockData.js';
+import { exhibitionData } from './data/mockData.js';
 
-const byId = (id) => document.getElementById(id);
+const $ = (id) => document.getElementById(id);
+const page = document.body.dataset.page;
 
-const renderHero = () => {
-  byId('hero-kicker').textContent = siteData.profile.title;
-  byId('hero-title').textContent = `${siteData.profile.name} · 个人 IP 小站`;
-  byId('hero-description').textContent = siteData.profile.description;
+const renderShell = () => {
+  const siteName = $('site-name');
+  const siteZhName = $('site-zh-name');
+  const nav = $('site-nav');
+  const footer = $('footer');
 
-  const actions = byId('hero-actions');
-  actions.innerHTML = '';
-  siteData.profile.ctas.forEach((cta) => {
-    const link = document.createElement('a');
-    link.href = cta.href;
-    link.className = `button ${cta.type === 'primary' ? 'button-primary' : 'button-secondary'}`;
-    link.textContent = cta.label;
-    actions.append(link);
+  if (siteName) siteName.textContent = exhibitionData.site.name;
+  if (siteZhName) siteZhName.textContent = exhibitionData.site.zhName;
+
+  if (nav) {
+    nav.innerHTML = '';
+    exhibitionData.site.nav.forEach((item) => {
+      const link = document.createElement('a');
+      link.href = item.href;
+      link.textContent = item.label;
+      const isCurrent = location.pathname.endsWith(item.href) || (location.pathname === '/' && item.href === 'index.html');
+      if (isCurrent) link.setAttribute('aria-current', 'page');
+      nav.append(link);
+    });
+  }
+
+  const menuToggle = $('menu-toggle');
+  menuToggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(Boolean(open)));
+  });
+
+  if (footer) footer.textContent = '纸、雾、花瓣、旧绢、傍晚的水面。';
+};
+
+const renderHome = () => {
+  const { hero, portals, featured, preface } = exhibitionData.home;
+
+  $('hero-title').textContent = hero.title;
+  $('hero-subtitle').textContent = hero.subtitle;
+
+  const heroPanel = $('hero-panel');
+  heroPanel?.style.setProperty('--hero-image', `url("${hero.backgroundImage}")`);
+
+  const heroAction = $('hero-action');
+  heroAction.textContent = hero.action.label;
+  heroAction.href = hero.action.href;
+
+  const heroCredit = $('hero-credit');
+  heroCredit.textContent = `背景图：${hero.backgroundCredit}`;
+
+  $('portal-title').textContent = portals.title;
+  const portalGrid = $('portal-grid');
+  portalGrid.innerHTML = '';
+
+  portals.items.forEach((item, index) => {
+    const card = document.createElement('a');
+    card.className = 'card portal-card';
+    card.href = item.href;
+    card.innerHTML = `
+      <span class="portal-index">${String(index + 1).padStart(2, '0')}</span>
+      <h3>${item.name}</h3>
+      <p>${item.note}</p>
+    `;
+    portalGrid.append(card);
+  });
+
+  $('featured-title').textContent = featured.title;
+  $('featured-subtitle').textContent = featured.subtitle;
+
+  const featuredGrid = $('featured-grid');
+  featuredGrid.innerHTML = '';
+
+  featured.works.forEach((work, index) => {
+    const figure = document.createElement('figure');
+    figure.className = 'image-card';
+    figure.innerHTML = `
+      <div class="image-placeholder image-${index + 1}" aria-hidden="true"></div>
+      <figcaption>
+        <strong>${work.title}</strong>
+        <span>${work.meta}</span>
+      </figcaption>
+    `;
+    featuredGrid.append(figure);
+  });
+
+  const prefaceContent = $('preface-content');
+  prefaceContent.innerHTML = '';
+  preface.forEach((line) => {
+    const p = document.createElement('p');
+    p.textContent = line;
+    prefaceContent.append(p);
+  });
+};
+
+const renderCategoryPage = (config) => {
+  $('page-title').textContent = config.title;
+  $('page-intro').textContent = config.intro;
+
+  const list = $('page-blocks');
+  list.innerHTML = '';
+  config.blocks.forEach((text) => {
+    const li = document.createElement('li');
+    li.textContent = text;
+    list.append(li);
   });
 };
 
 const renderAbout = () => {
-  const container = byId('about-grid');
+  const about = exhibitionData.pages.about;
+  $('page-title').textContent = about.title;
+
+  const container = $('about-copy');
   container.innerHTML = '';
 
-  siteData.about.forEach((item) => {
-    const article = document.createElement('article');
-    article.className = 'info-card';
-    article.innerHTML = `<h3>${item.label}</h3><p>${item.value}</p>`;
-    container.append(article);
+  about.paragraphs.forEach((paragraph) => {
+    const p = document.createElement('p');
+    p.innerHTML = paragraph.replaceAll('\n', '<br />');
+    container.append(p);
   });
 };
 
-const renderWorks = () => {
-  byId('works-intro').textContent = siteData.worksIntro;
-  const container = byId('works-grid');
-  container.innerHTML = '';
+renderShell();
 
-  siteData.works.forEach((work) => {
-    const article = document.createElement('article');
-    article.className = 'work-card';
-    article.innerHTML = `
-      <p class="meta">${work.type} · ${work.year}</p>
-      <h3>${work.title}</h3>
-      <p>${work.summary}</p>
-      <a href="${work.href}">${work.linkLabel}</a>
-    `;
-    container.append(article);
-  });
-};
-
-const renderEssays = () => {
-  byId('essays-intro').textContent = siteData.essaysIntro;
-  const container = byId('essay-list');
-  container.innerHTML = '';
-
-  siteData.essays.forEach((essay) => {
-    const item = document.createElement('li');
-    item.className = 'essay-item';
-    item.innerHTML = `
-      <a href="${essay.href}" aria-label="阅读：${essay.title}">
-        <h3>${essay.title}</h3>
-        <p>${essay.excerpt}</p>
-        <time datetime="${essay.date}">${essay.date}</time>
-      </a>
-    `;
-    container.append(item);
-  });
-};
-
-const renderContact = () => {
-  byId('contact-note').textContent = siteData.contactNote;
-  const container = byId('contact-list');
-  container.innerHTML = '';
-
-  siteData.contacts.forEach((contact) => {
-    const item = document.createElement('li');
-    item.innerHTML = `<span>${contact.label}</span><a href="${contact.href}">${contact.value}</a>`;
-    container.append(item);
-  });
-};
-
-const renderFooter = () => {
-  const year = new Date().getFullYear();
-  byId('footer-text').textContent = `© ${year} ${siteData.profile.name} · ${siteData.profile.tagline}`;
-};
-
-renderHero();
-renderAbout();
-renderWorks();
-renderEssays();
-renderContact();
-renderFooter();
+if (page === 'home') renderHome();
+if (page === 'overview') renderCategoryPage(exhibitionData.pages.overview);
+if (page === 'artist') renderCategoryPage(exhibitionData.pages.artist);
+if (page === 'topic') renderCategoryPage(exhibitionData.pages.topic);
+if (page === 'artwork') renderCategoryPage(exhibitionData.pages.artwork);
+if (page === 'creators') renderCategoryPage(exhibitionData.pages.creators);
+if (page === 'about') renderAbout();
